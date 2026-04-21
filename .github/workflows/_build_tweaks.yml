@@ -86,6 +86,12 @@ jobs:
           mkdir -p $THEOS/vendor/include
           cp YTLite/roothide.h $THEOS/vendor/include/roothide.h
 
+      - name: Clone YouTubeHeader
+        run: git clone --quiet --depth=1 https://github.com/PoomSmart/YouTubeHeader.git YouTubeHeader
+
+      - name: Clone protobuf
+        run: git clone --quiet --depth=1 https://github.com/protocolbuffers/protobuf.git protobuf
+
       - name: Build YouTube Plus from source
         run: |
           cd YTLite && make clean package DEBUG=0 FINALPACKAGE=1
