@@ -76,15 +76,15 @@ jobs:
           git checkout
           mv *.sdk $THEOS/sdks
 
-      - name: Install roothide header
-        run: |
-          mkdir -p $THEOS/vendor/include
-          curl -sL https://raw.githubusercontent.com/roothide/theos-roothide/main/vendor/include/roothide.h -o $THEOS/vendor/include/roothide.h
-
       - name: Checkout fork source
         uses: actions/checkout@v6
         with:
           path: YTLite
+
+      - name: Install roothide header
+        run: |
+          mkdir -p $THEOS/vendor/include
+          cp YTLite/roothide.h $THEOS/vendor/include/roothide.h
 
       - name: Build YouTube Plus from source
         run: |
